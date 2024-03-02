@@ -5,6 +5,9 @@
             <div class="col-12">
                 <h1 class="display-1 mt-5 text-center">Promo Title</h1>
             </div>
+            <div class="col-12">
+                <p class="text-center">Text center</p>
+            </div>
         </div>
     </div>
 </template>

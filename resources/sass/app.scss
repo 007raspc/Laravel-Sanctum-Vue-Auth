@@ -1,0 +1,53 @@
+@import url('https://fonts.bunny.net/css?family=Nunito');
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'variables';
+
+body {
+    height: 100%;
+    font-family: 'Nunito', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper .db-layout {
+    flex: 1 1 auto;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 1fr 5fr;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+.wrapper .db-layout .db-sidebar {
+    grid-area: sidebar;
+    align-self: start;
+}
+
+.wrapper .db-layout .db-main {
+    grid-area: main;
+}
+
+@media (max-width: 992px) {
+    .wrapper .db-layout {
+        display: block;
+    }
+    .offcanvas-lg.hiding, .offcanvas-lg.show, .offcanvas-lg.showing {
+        visibility: visible;
+    }
+    .offcanvas-lg.show:not(.hiding), .offcanvas-lg.showing {
+        transform: initial;
+    }
+    .offcanvas-lg.start {
+        top: 0;
+        left: 0;
+        width: var(--bs-offcanvas-width);
+        border-right: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
+        transform: translateX(-100%);
+    }
+}

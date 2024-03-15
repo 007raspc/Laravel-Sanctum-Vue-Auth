@@ -102,7 +102,6 @@
 </template>
 
 <script>
-import {Dropdown} from 'bootstrap'
 import {mapGetters, mapState} from 'vuex'
 
 export default {

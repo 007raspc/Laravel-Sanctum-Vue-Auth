@@ -25,7 +25,7 @@ const actions = {
                     commit('SET_USER', response.data.data.user)
                     resolve()
                 })
-                .catch(error => {
+                .catch(() => {
                     localStorage.removeItem('access_token')
                     commit('SET_USER', null)
                     reject()
@@ -49,10 +49,13 @@ const actions = {
     logout({commit}) {
         return new Promise((resolve, reject) => {
             axios.delete(Config.apiPath + 'auth/user/logout')
-                .then((response) => {
+                .then(() => {
                     localStorage.removeItem('access_token')
                     commit('SET_USER', null)
                     resolve()
+                })
+                .catch(error => {
+                    reject(error.response.data)
                 })
         })
     },
@@ -94,10 +97,12 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(Config.apiPath + 'users/' + id)
                 .then(response => {
-                    console.log(response);
+                    console.log(response)
+                    resolve(response.data)
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error)
+                    reject(error.response.data)
                 })
         })
     }

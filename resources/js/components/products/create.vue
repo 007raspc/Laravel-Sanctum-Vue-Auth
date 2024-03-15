@@ -123,7 +123,6 @@
 
 <script>
 import {mapActions} from 'vuex'
-import {ScrollSpy} from "bootstrap";
 
 export default {
     name: "Create Product Component",
@@ -154,7 +153,7 @@ export default {
         ]),
         create() {
             this.productStore(this.data)
-                .then(response => {
+                .then(() => {
                     this.$router.push({name: 'products.index'})
                 })
                 .catch(error => {

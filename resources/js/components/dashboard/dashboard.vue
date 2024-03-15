@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import store from '../../store/store.js'
 import {mapActions} from 'vuex'
 
 export default {

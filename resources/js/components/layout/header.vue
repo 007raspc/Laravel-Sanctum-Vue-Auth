@@ -6,7 +6,7 @@
                 <span class="bi bi-toggle-off"></span>
                 <span class="bi bi-toggle-on"></span>
             </button>
-            <button @click.prevent="showTest">Show Tests</button>
+            <button @click.prevent="showTest()">Show Tests</button>
             <template v-if="!user">
                 <router-link class="navbar-brand" :to="{name: 'promo'}">
                     <i class="bi bi-badge-3d" style="font-size: 2rem; color: cornflowerblue;"></i>
@@ -69,7 +69,7 @@
                     <li class="dropdown profile">
                         <button class="dropdown-toggle" :id="'dropdown_header'"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                            <img :src="user.avatar"
+                            <img :src="user.avatar[0]"
                                  alt="mdo" class="avatar rounded-circle">
                             <span class="account-data">
                                                 <span class="fw-bold">{{ user.name }}</span>
@@ -81,7 +81,7 @@
                             <li>
                                 <router-link class="dropdown-item" :to="{ name: 'profile', hash: '#company' }">
                                     <small>Company:</small>
-                                    <span class="fw-bold">USER</span>
+                                    <span class="fw-bold">{{ user.company ? user.company.name : 'DEFAULT' }}</span>
                                 </router-link>
                             </li>
                             <li>
@@ -127,20 +127,8 @@ export default {
         },
     },
     mounted() {
-        // console.log(this.user);
-        // console.log(this.$store.getters)
-        // this.scrollTo()
     },
     methods: {
-        // scrollTo() {
-        //     const link = 'http://127.0.0.1:8000/profile#company'
-        //     const hash = this.$route.hash
-        //     const element = this.$refs[hash.slice(1)]
-        //     console.log(hash, element);
-        //     if (element) {
-        //         element.scrollIntoView({behavior: 'smooth'});
-        //     }
-        // },
         showTest() {
             // console.log(this.auth_user);
         },

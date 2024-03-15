@@ -1,6 +1,9 @@
 import {createStore, createLogger} from 'vuex'
 // import toast from './modules/toast'
-import auth from './modules/auth';
+import auth from './modules/auth'
+import product from './modules/product'
+import helper from './modules/helpers'
+import company from './modules/companies'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -10,7 +13,9 @@ const store = createStore({
         // toast,
         // helper,
         auth,
-        // products,
+        product,
+        helper,
+        company,
         // sheets,
         // marketplace,
         // orders,

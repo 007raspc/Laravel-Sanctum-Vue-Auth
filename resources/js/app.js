@@ -1,12 +1,12 @@
 import '../sass/app.scss'
 import {createApp} from 'vue'
-import axios from 'axios';
+import axios from 'axios'
 import store from './store/store'
 import router from './router'
 import App from './components/app.vue'
 
-window.axios = axios;
-// axios.defaults.withXSRFToken = true;
+window.axios = axios
+axios.defaults.withXSRFToken = true
 
 // Authorization header
 axios.interceptors.request.use(config => {

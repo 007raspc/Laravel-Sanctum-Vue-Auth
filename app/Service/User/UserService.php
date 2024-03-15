@@ -4,6 +4,7 @@ namespace App\Service\User;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Service\Helper\HelperService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class UserService
         }
     }
 
-    public function getUserForLogin(array $data): User|bool
+    public function getUserForLogin(array $data): User|null
     {
         $credentials = request(['login', 'password']);
         auth()->attempt($credentials);
@@ -49,5 +50,18 @@ class UserService
     {
         $request->user()->currentAccessToken()->delete();
         return true;
+    }
+
+    public function update(User $user, array $profile): string
+    {
+        $service = new HelperService();
+        $files = $service->moveTo($profile['avatar'], 'users_data/'.$user->id.'/', 'avatar');
+        $user->update([
+            'name' => $profile['name'],
+            'role_id' => Role::where('name', $profile['role'])->first()->id,
+            'avatar' => $files[0],
+        ]);
+        $service->clearFolder('users_data/'.$user->id.'/trash');
+        return $profile['email'] . ' updated';
     }
 }

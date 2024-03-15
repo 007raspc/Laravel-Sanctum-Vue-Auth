@@ -6,7 +6,13 @@
 import {mapActions} from 'vuex'
 
 export default {
-    name: "Logout Component",
+    name: 'Logout Component',
+    data() {
+        return {
+            name: 'Logout Component',
+            errors: {},
+        }
+    },
     methods: {
         ...mapActions([
             'logout',

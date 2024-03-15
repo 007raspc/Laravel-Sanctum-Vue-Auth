@@ -10,7 +10,7 @@
             <div class="offcanvas-body">
                 <nav class="sidebar-links w-100">
                     <div class="list-group">
-                        <router-link class="list-group-item list-group-item-action" :to="{name: 'dashboard'}">
+                        <router-link class="list-group-item list-group-item-action" :to="{name: 'dashboard.index'}">
                             <i class="bi bi-speedometer2"></i> Dashboard
                         </router-link>
                         <router-link class="list-group-item list-group-item-action" :to="{name: 'products.index'}">

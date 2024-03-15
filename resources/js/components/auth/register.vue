@@ -42,9 +42,8 @@
                             <select id="role" class="form-select"
                                     v-model="form.role"
                                     :class="{ 'is-invalid': errors.role }">
-                                <option selected></option>
-                                <option value="user">User</option>
-                                <option value="manager">Manager</option>
+                                <option disabled value="">Please select role</option>
+                                <option v-for="role in roles" :value="role">{{ role }}</option>
                             </select>
                             <div class="invalid-feedback" v-if="errors.role">
                                 <small class="d-inline-block" v-for="(error, index) in errors.role"
@@ -98,9 +97,15 @@
 import {mapActions} from "vuex";
 
 export default {
-    name: "Register Component",
+    name: 'Register Component',
     data() {
         return {
+            name: 'Register Component',
+            roles: [
+                'manager',
+                'agent',
+                'visitor',
+            ],
             form: {
                 name: null,
                 email: null,

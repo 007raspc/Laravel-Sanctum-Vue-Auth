@@ -1,12 +1,17 @@
 <template>
-    <div>1</div>
+    <div class="bd-intro">
+        <h1>Product Index Template</h1>
+    </div>
+    <div class="bd-content">
+        <router-view/>
+    </div>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
 
 export default {
-    name: "Create Product Component",
+    name: 'Template Product Component',
     methods: {
         ...mapActions([]),
     },

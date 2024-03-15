@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')
+                ->unsigned()
                 ->after('email')
                 ->default(3);
             $table->string('avatar')
@@ -19,9 +20,7 @@ return new class extends Migration {
             $table->index('role_id', 'role_idx');
             $table->foreign('role_id', 'role_id_fk')
                 ->references('id')
-                ->on('roles')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->on('roles');
         });
     }
 

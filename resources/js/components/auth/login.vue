@@ -49,7 +49,6 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-4">
                             <button class="btn btn-primary mb-5">Login</button>
-                            <!--                            <p class="mb-0"><a class="" href="#!">Forgot password?</a></p>-->
                             <p class="mb-0">Don't have an account?
                                 <router-link class="fw-bold" :to="{name: 'auth.register'}">Sign Up</router-link>
                             </p>
@@ -69,6 +68,7 @@ export default {
     name: "Login Component",
     data() {
         return {
+            name: 'Login Component',
             form: {
                 username: null,
                 password: null,

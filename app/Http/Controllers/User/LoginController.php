@@ -19,9 +19,7 @@ class LoginController extends Controller
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
             return $this->apiResponse->sendError(
-                ValidationException::withMessages([
-                    'username' => 'The provided credentials are incorrect.',
-                ]),
+                ['username' => ['The provided credentials are incorrect.'], ],
                 'Error in login',
                 401
             );

@@ -13,13 +13,8 @@ const routes = [
         component: () => import('./components/post.vue'),
     },
     {
-        path: '/',
-        name: 'promo',
-        component: () => import('./components/promo/promo.vue'),
-    },
-    {
         path: '/auth',
-        component: () => import('./components/auth/default.vue'),
+        component: () => import('./components/auth/template.vue'),
         children: [
             {
                 path: '/login',
@@ -39,56 +34,56 @@ const routes = [
                 component: () => import('./components/auth/logout.vue'),
                 meta: {requiresAuth: true},
             },
+        ],
+    },
+    {
+        path: '/',
+        name: 'promo',
+        component: () => import('./components/promo/promo.vue'),
+    },
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import('./components/dashboard/template.vue'),
+        meta: {requiresAuth: true},
+        children: [
+            {
+                path: '',
+                name: 'dashboard.index',
+                component: () => import('./components/dashboard/dashboard.vue'),
+            },
             {
                 path: '/profile',
                 name: 'profile',
                 component: () => import('./components/auth/profile.vue'),
                 meta: {requiresAuth: true},
             },
-        ],
-    },
-    {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: () => import('./components/dashboard/default.vue'),
-        meta: {requiresAuth: true},
-        children: [
             {
-                path: '/',
-                name: 'dashboard.index',
-                component: () => import('./components/dashboard/dashboard.vue'),
-            },
-            {
-                path: '/products',
-                'name': 'products',
+                path: 'products',
+                name: 'products',
                 component: () => import('./components/products/template.vue'),
                 children: [
                     {
-                        path: '/',
+                        path: '',
                         name: 'products.index',
                         component: () => import('./components/products/index.vue'),
                     },
                     {
-                        path: '/',
+                        path: 'create',
                         name: 'products.create',
                         component: () => import('./components/products/create.vue'),
                     },
                     {
-                        path: '/',
+                        path: ':id/edit',
                         name: 'products.edit',
                         component: () => import('./components/products/edit.vue'),
                     },
                     {
-                        path: '/',
+                        path: ':id',
                         name: 'products.show',
                         component: () => import('./components/products/show.vue'),
                     },
                 ],
-            },
-            {
-                path: '/products',
-                name: 'products.index',
-                component: () => import('./components/products/index.vue'),
             },
         ],
     },

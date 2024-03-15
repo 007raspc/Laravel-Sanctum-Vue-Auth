@@ -3,7 +3,7 @@
     <div class="container-xxl db-layout">
         <Aside/>
         <main class="db-main">
-            <Dashboard/>
+            <router-view/>
         </main>
     </div>
     <Footer/>
@@ -24,7 +24,7 @@ export default {
         'Dashboard': Dashboard,
     },
     mounted() {
-        console.log('Dashboard template Component');
+        console.log('Dashboard template Component')
     }
 }
 </script>

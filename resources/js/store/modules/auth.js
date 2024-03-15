@@ -22,12 +22,10 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios.get(Config.apiPath + 'auth/user')
                 .then(response => {
-                    console.log('auth success');
                     commit('SET_USER', response.data.data.user)
                     resolve()
                 })
                 .catch(error => {
-                    console.log('auth failed');
                     localStorage.removeItem('access_token')
                     commit('SET_USER', null)
                     reject()
@@ -44,7 +42,6 @@ const actions = {
                     resolve(response.data.message)
                 })
                 .catch(error => {
-                    console.log(error);
                     reject(error.response.data)
                 })
         })
@@ -71,11 +68,21 @@ const actions = {
                 })
         })
     },
-    updateProfile({commit, dispatch}, user) {
+    updateProfile({commit, dispatch}, data) {
         return new Promise((resolve, reject) => {
-            axios.patch(Config.apiPath + 'users/', user)
+            axios.patch(Config.apiPath + 'auth/user/', data)
                 .then(response => {
-                    commit('UPDATE_PROFILE_OK', response.data.data)
+                    resolve(response.data.message)
+                })
+                .catch(error => {
+                    reject(error.response.data)
+                })
+        })
+    },
+    showMyProfile({}) {
+        return new Promise((resolve, reject) => {
+            axios.get(Config.apiPath + 'auth/user/me')
+                .then(response => {
                     resolve(response.data)
                 })
                 .catch(error => {
@@ -83,6 +90,17 @@ const actions = {
                 })
         })
     },
+    showProfile({}, id) {
+        return new Promise((resolve, reject) => {
+            axios.get(Config.apiPath + 'users/' + id)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        })
+    }
 }
 
 export default {

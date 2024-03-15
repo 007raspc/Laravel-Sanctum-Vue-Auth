@@ -1,34 +1,35 @@
 <template>
     <div class="bd-intro">
-        <h1>Dashboard Index Component</h1>
+        <h1>Dashboard1 Index Component</h1>
     </div>
     <div class="bd-content">
         <button @click.prevent="test1()">Test</button>
-        <br>
-        <button @click.prevent="test2()">Test</button>
     </div>
 </template>
 
 <script>
-import store from '../../store/store.js';
-import {mapActions} from "vuex";
+import store from '../../store/store.js'
+import {mapActions} from 'vuex'
 
 export default {
-    name: "Dashboard App Component",
+    name: 'Dashboard App Component',
+    data() {
+        return {
+            name: 'Dashboard App Component',
+            errors: {},
+        }
+    },
     components: {},
     methods: {
         ...mapActions([
             'checkLogin',
         ]),
         test1() {
-            this.checkLogin()
+            // console.log(this.$route.name)
         },
-        test2() {
-            console.log(store.state);
-        }
     },
     mounted() {
-        console.log('Dashboard App Component');
+        console.log('Dashboard App Component')
     }
 }
 </script>
